@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "325788f3d3b018e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "91524358e6f08cf7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d465b61cec6a7ea7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Документация kotlin..md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "Документация kotlin."
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f93f2480ac9f9739",
+    "type": "split",
+    "children": [
+      {
+        "id": "2e13f7f65df1fdea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e3eb8a21c9c7bc7f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "229d2abe91970ad5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "4ddfa5899bd7e415",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b74ae4f5e4ee9c82",
+    "type": "split",
+    "children": [
+      {
+        "id": "58d495af48ca3e4c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "26b1720a1620de27",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Документация kotlin..md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки"
+            }
+          },
+          {
+            "id": "b144ad6b32b5193b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Документация kotlin..md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки"
+            }
+          },
+          {
+            "id": "24bab2e92edd1ef8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "1cb255119a70e123",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Все свойства"
+            }
+          },
+          {
+            "id": "d79ecf90bd0ae1cf",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Документация kotlin..md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "d465b61cec6a7ea7",
+  "lastOpenFiles": [
+    "app/src/main/res/drawable/icon.PNG",
+    "app/src/main/res/drawable/2026-09-29_Original.PNG",
+    "app/src/main/res/drawable/icon_1.png",
+    "app/src/main/res/drawable/Иконка_цвет.png",
+    "app/src/main/java/com/example/messenger/screens/WelcomeScreen.kt~",
+    "build/reports/configuration-cache/1fuoo4632x95bp8nl9f23yk2i/5pqvesfqrshclqzf5ywa8yu0f/configuration-cache-report.html",
+    "build/reports/configuration-cache/1fuoo4632x95bp8nl9f23yk2i/5pqvesfqrshclqzf5ywa8yu0f",
+    "build/reports/configuration-cache/1fuoo4632x95bp8nl9f23yk2i/14sc0ood4h1obhsv5wyjlbmke/configuration-cache-report.html",
+    "build/reports/configuration-cache/1fuoo4632x95bp8nl9f23yk2i/14sc0ood4h1obhsv5wyjlbmke",
+    "build/reports/configuration-cache/1fuoo4632x95bp8nl9f23yk2i",
+    "build/reports/configuration-cache",
+    "build/reports",
+    "build",
+    "app/build/intermediates/apk_ide_redirect_file/debug/createDebugApkListingFileRedirect/redirect.txt",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-xxhdpi-v4/ic_launcher.webp",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/drawable/icon.PNG",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-mdpi-v4/ic_launcher_round.webp",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-mdpi-v4/ic_launcher.webp",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-xhdpi-v4/ic_launcher_round.webp",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-xhdpi-v4/ic_launcher.webp",
+    "app/build/intermediates/packaged_res/debug/packageDebugResources/mipmap-xxxhdpi-v4/ic_launcher_round.webp",
+    "Добро пожаловать.md",
+    "Документация kotlin..md"
+  ]
+}
