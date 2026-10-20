@@ -28,15 +28,11 @@ fun PasswordScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Авторизация",
+            text = "Введите пароль",
             fontSize = 28.sp,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.SemiBold,
             color = Color(0xFF4C050C)
-        )
-
-        Text(
-            text = "Укажите почту на которую ранее был зарегистрирован ваш аккаунт"
         )
 
     }

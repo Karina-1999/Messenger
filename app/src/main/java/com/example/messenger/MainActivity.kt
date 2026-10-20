@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.messenger.screens.EmailScreen
+import com.example.messenger.screens.LoginScreen
 import com.example.messenger.screens.PasswordScreen
 import com.example.messenger.screens.WelcomeScreen
 import com.example.messenger.ui.theme.MessengerTheme
@@ -32,6 +33,11 @@ class MainActivity : ComponentActivity() {
                     composable("password") {
                         PasswordScreen()
                     }
+
+                    composable("login") {
+                        LoginScreen()
+                    }
+
 
                 }
             }

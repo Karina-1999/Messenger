@@ -73,7 +73,9 @@ fun EmailScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(5.dp))
 
-        TextButton(onClick = {}) {
+        TextButton(onClick = {
+            navController.navigate("login")
+        }) {
             Text (text = "Есть аккаунт")
         }
         Spacer(modifier = Modifier.height(80.dp))
