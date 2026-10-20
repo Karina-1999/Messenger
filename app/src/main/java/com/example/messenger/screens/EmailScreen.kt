@@ -1,21 +1,23 @@
 package com.example.messenger.screens
 
-import android.R.attr.onClick
-import android.R.attr.text
-import android.R.attr.top
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.displayCutoutPadding
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,43 +39,58 @@ fun EmailScreen(navController: NavController) {
     var text by remember { mutableStateOf("") }
     Column(
     modifier = Modifier
-        .fillMaxWidth()
         .fillMaxSize()
-        .background(color = Color((0xFF8dafc6))),
-
-        verticalArrangement = Arrangement.spacedBy(24.dp)
+        .background(color = Color((0xFFE3DFCE)))
+        .padding(horizontal = 24.dp, vertical = 40.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
     ){
-        Text(text = "Напишите свой email для регистрации или входа в аккаунт",
-            fontSize = 25.sp,
+        Text(text = "Регистрация",
+            fontSize = 28.sp,
             textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier
-                .padding(top = 200.dp, start = 20.dp, end = 20.dp)
-                .displayCutoutPadding(),
-
+            fontWeight = FontWeight.SemiBold,
             color = Color(0xFF4C050C)
         )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(text = "Введите почту для создания аккаунта",
+            color = Color(0xFF625B52),
+            fontSize = 16.sp,
+            )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
         OutlinedTextField(
             value = text,
             onValueChange = {text = it},
             label = { Text("Введите email") },
+            shape = CircleShape,
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp)
                 .align(Alignment.CenterHorizontally)
         )
-        Button(
-            onClick = {navController.navigate("password")},
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4C050C)),
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 210.dp)
 
+        Spacer(modifier = Modifier.height(5.dp))
+
+        TextButton(onClick = {}) {
+            Text (text = "Есть аккаунт")
+        }
+        Spacer(modifier = Modifier.height(80.dp))
+
+        Button(onClick = {navController.navigate("password")},
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            shape = RoundedCornerShape(16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF4C050C),
+                contentColor = Color(0xFFE3DFCE)),
         ){
             Text(
                 text = "Продолжить",
                 fontSize = 20.sp,
-                color = Color(0xFF8dafc6)
+                fontWeight = FontWeight.Medium
             )
         }
     }

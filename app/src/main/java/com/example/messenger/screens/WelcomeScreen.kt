@@ -1,11 +1,18 @@
 package com.example.messenger.screens
+import android.R.attr.onClick
+import android.R.attr.text
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -31,39 +38,53 @@ fun WelcomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xFF8dafc6)),
-            verticalArrangement = Arrangement.SpaceAround,
+            .background(color = Color(0xFFE3DFCE))
+            .padding(horizontal = 24.dp, vertical = 32.dp),
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
 
     ){
-        Text(
-            text = "Добро пожаловать!",
-            style = TextStyle(
-                fontSize = 34.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Serif,
-                color = Color(0xFF4C050C)
-            )
-        )
 
         Image(
             painter = painterResource(id = R.drawable.icon),
             contentDescription = "Иконка мессенджера",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(200.dp)
-                .clip(CircleShape)
+                .clip(RoundedCornerShape(26.dp))
+                .size(180.dp)
         )
 
-        Button(onClick = {
-            navController.navigate("email") },
+        Spacer(modifier = Modifier.height(32.dp))
 
+        Text(
+            text = "Добро пожаловать!",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color(0xFF4C050C)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text(
+            text = "Твое пространство для общения",
+            fontSize = 16.sp,
+            color = Color(0xFF625B52)
+        )
+
+        Spacer(modifier = Modifier.height(36.dp))
+
+        Button(onClick = { navController.navigate("email") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF4C050C)
+                containerColor = Color(0xFF4C050C),
+                contentColor = Color(0xFFE3DFCE)
             )
             ){
-            Text("Начать", fontSize = 23.sp,
-                color = Color(0xFF94B1C8)
+            Text(text = "Начать",
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Medium
             )
         }
     }
