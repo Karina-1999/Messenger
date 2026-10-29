@@ -1,5 +1,7 @@
 package com.example.messenger.screens
 
+import android.R.attr.label
+import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,7 +32,8 @@ import androidx.navigation.NavController
 
 @Composable
 fun LoginScreen(navController: NavController){
-    var text by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember {mutableStateOf("")}
     Column(
         modifier = Modifier
             .background(color = Color(0xFFE3DFCE))
@@ -56,16 +59,34 @@ fun LoginScreen(navController: NavController){
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
-            value = text,
-            onValueChange = {text = it},
+            value = email,
+            onValueChange = {email = it},
             label = { Text("Введите email") },
             shape = CircleShape,
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp)
                 .align(Alignment.CenterHorizontally)
         )
+        Spacer (modifier = Modifier.height(20.dp))
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Text(
+            text = "Введите пароль",
+            color = Color(0xFF625B52),
+            textAlign = TextAlign.Center,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        OutlinedTextField(
+            value = password,
+            onValueChange = {password = it},
+            label = {Text("Введите пароль")},
+            shape = CircleShape,
+            modifier = Modifier
+                .padding(start = 20.dp, end = 20.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+
+        Spacer(modifier = Modifier.height(60.dp))
 
         Button(onClick = {navController.navigate("password")},
             modifier = Modifier

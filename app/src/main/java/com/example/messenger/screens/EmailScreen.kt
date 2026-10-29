@@ -37,6 +37,7 @@ import androidx.navigation.NavController
 @Composable
 fun EmailScreen(navController: NavController) {
     var text by remember { mutableStateOf("") }
+    var showError by remember {mutableStateOf(false)}
     Column(
     modifier = Modifier
         .fillMaxSize()
@@ -78,9 +79,14 @@ fun EmailScreen(navController: NavController) {
         }) {
             Text (text = "Есть аккаунт")
         }
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
-        Button(onClick = {navController.navigate("password")},
+        Button(onClick = {
+            if(text.isNotBlank()){
+            navController.navigate("password/$text")}
+            else{
+                showError = true
+            }},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -88,6 +94,7 @@ fun EmailScreen(navController: NavController) {
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFF4C050C),
                 contentColor = Color(0xFFE3DFCE)),
+
         ){
             Text(
                 text = "Продолжить",
