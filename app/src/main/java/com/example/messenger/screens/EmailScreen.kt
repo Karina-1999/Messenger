@@ -1,6 +1,7 @@
 package com.example.messenger.screens
 
 
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,10 +12,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,10 +38,13 @@ import androidx.navigation.NavController
 fun EmailScreen(navController: NavController) {
     var text by remember { mutableStateOf("") }
     var showError by remember {mutableStateOf(false)}
+
+    val emailRegex = Regex("^[A-Za-z0-9+_.-]+@(.+)\$")
+
     Column(
     modifier = Modifier
         .fillMaxSize()
-        .background(color = Color((0xFFE3DFCE)))
+        .background(color = Color(0xFFE3DFCE))
         .padding(horizontal = 24.dp, vertical = 40.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -64,12 +67,25 @@ fun EmailScreen(navController: NavController) {
 
         OutlinedTextField(
             value = text,
-            onValueChange = {text = it},
+            onValueChange = { newValue ->
+                text = newValue
+                if(showError && newValue.isNotBlank()){
+                    showError = false
+                }},
             label = { Text("Введите email") },
             shape = CircleShape,
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp)
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally),
+            isError = showError,
+            supportingText = {
+                if (showError){
+                    Text(
+                        text = "Укажите почту",
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+            }
         )
 
         Spacer(modifier = Modifier.height(5.dp))
@@ -82,8 +98,9 @@ fun EmailScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(60.dp))
 
         Button(onClick = {
-            if(text.isNotBlank()){
-            navController.navigate("password/$text")}
+            if(text.isNotBlank() && emailRegex.matches(text)){
+                val encodedEmail = Uri.encode(text)
+            navController.navigate("password/$encodedEmail")}
             else{
                 showError = true
             }},

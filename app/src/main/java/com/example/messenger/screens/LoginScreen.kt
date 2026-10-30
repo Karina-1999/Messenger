@@ -1,7 +1,5 @@
 package com.example.messenger.screens
 
-import android.R.attr.label
-import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,8 +10,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +41,7 @@ import androidx.navigation.NavController
 fun LoginScreen(navController: NavController){
     var email by remember { mutableStateOf("") }
     var password by remember {mutableStateOf("")}
+    var passwordVisibly by remember {mutableStateOf(false)}
     Column(
         modifier = Modifier
             .background(color = Color(0xFFE3DFCE))
@@ -83,12 +91,26 @@ fun LoginScreen(navController: NavController){
             shape = CircleShape,
             modifier = Modifier
                 .padding(start = 20.dp, end = 20.dp)
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally),
+            singleLine = true,
+            visualTransformation = if(passwordVisibly){
+                VisualTransformation.None
+            }
+            else{
+                PasswordVisualTransformation()
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            trailingIcon = {
+                val image = if(passwordVisibly) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                IconButton(onClick = {passwordVisibly = !passwordVisibly}) {
+                    Icon(imageVector = image, contentDescription = null)
+                }
+            }
         )
 
         Spacer(modifier = Modifier.height(60.dp))
 
-        Button(onClick = {navController.navigate("password")},
+        Button(onClick = {navController.navigate("home")},
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),

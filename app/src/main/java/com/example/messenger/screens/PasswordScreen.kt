@@ -1,9 +1,5 @@
 package com.example.messenger.screens
 
-import android.R.attr.contentDescription
-import android.R.attr.onClick
-import android.R.attr.singleLine
-import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,7 +28,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key.Companion.K
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -48,6 +43,7 @@ fun PasswordScreen(navController: NavController, email: String) {
     var password2 by remember {mutableStateOf("")}
     var showError by remember {mutableStateOf(false)}
     var passwordVisible by remember {mutableStateOf(false)}
+    var passwordVisible2 by remember {mutableStateOf(false)}
     Column(
         modifier = Modifier
             .background(color = Color(0xFFE3DFCE))
@@ -110,7 +106,7 @@ fun PasswordScreen(navController: NavController, email: String) {
                 .padding(start = 20.dp, end = 20.dp)
                 .align(Alignment.CenterHorizontally),
 
-            visualTransformation = if (passwordVisible){
+            visualTransformation = if (passwordVisible2){
                 VisualTransformation.None
             }
             else{
@@ -118,8 +114,8 @@ fun PasswordScreen(navController: NavController, email: String) {
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = {
-                val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                IconButton(onClick = {passwordVisible = !passwordVisible}) {
+                val image = if (passwordVisible2) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                IconButton(onClick = {passwordVisible2 = !passwordVisible2}) {
                     Icon(imageVector= image, contentDescription = null)
                 }
             }
