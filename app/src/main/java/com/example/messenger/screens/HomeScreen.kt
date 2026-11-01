@@ -5,10 +5,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Search
@@ -16,6 +19,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -38,7 +43,7 @@ fun HomeScreen(navController: NavController, email: String) {
     var isActive by remember {mutableStateOf(false)}
     val searchHistory = remember {mutableListOf("")}
 
-    Column(
+    Row(
         modifier = Modifier
             .background(color = Color(0xFFE3DFCE))
             .fillMaxSize(),
@@ -49,9 +54,17 @@ fun HomeScreen(navController: NavController, email: String) {
             fontWeight = FontWeight.SemiBold,
             color = Color(0xFF4C050C),
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(top = 50.dp, start = 20.dp),
             textAlign = TextAlign.Start
+        )
+        Text(
+            text = "+",
+            fontSize = 30.sp,
+            //fontWeight = FontWeight.SemiBold,
+            color = Color(0xFF4C050C),
+            modifier = Modifier
+                .padding(top = 50.dp, end = 50.dp),
+            textAlign = TextAlign.End
         )
     }
     Box(
@@ -69,6 +82,8 @@ fun HomeScreen(navController: NavController, email: String) {
                 }
             },
             active = isActive,
+            modifier = Modifier
+                .padding(top = 30.dp),
             onActiveChange = {isActive = it},
             placeholder = {Text ("Поиск по чатам и сообщениям")},
             leadingIcon = {Icon (Icons.Default.Search, contentDescription = "Поиск")},
@@ -84,7 +99,10 @@ fun HomeScreen(navController: NavController, email: String) {
                         Icon(Icons.Default.Clear, contentDescription = "Очистить")
                     }
                 }
-            }
+            },
+            colors = SearchBarDefaults.colors(
+                containerColor = Color(0xFFF7F4EB)
+            )
         ){
             Column(modifier = Modifier
                 .fillMaxWidth()
@@ -109,4 +127,8 @@ fun HomeScreen(navController: NavController, email: String) {
         }
 
     }
+   // sealed class Screen(val route: String, val title: String, val icon: ImageVector){
+       // object Home: Screen("home", "Главная", Icons.Default.ChatBubbleOutline)
+
+   // }
 }
