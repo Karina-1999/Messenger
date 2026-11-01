@@ -125,7 +125,7 @@ fun PasswordScreen(navController: NavController, email: String) {
 
         Button(onClick = {
             if((password.isNotBlank() && password2.isNotBlank()) && password == password2){
-                navController.navigate("home")
+                navController.navigate("home/{email}")
             }
             else{
                 showError = true

@@ -46,10 +46,13 @@ class MainActivity : ComponentActivity() {
                     composable("login") {
                         LoginScreen(navController)
                     }
-                    composable("home") {
-                        HomeScreen()
-                    }
 
+                    composable(route = "home/{email}",
+                        arguments = listOf(navArgument("email"){type = NavType.StringType})
+                    ) { backStackEntry ->
+                        val email = requireNotNull(backStackEntry.arguments?.getString("email"))
+                        HomeScreen(navController, email = email)
+                    }
 
                 }
             }
