@@ -1,107 +1,126 @@
 package com.example.messenger.screens
 
+import androidx.compose.material3.IconButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChatBubbleOutline
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController, email: String) {
     var searchQuery by remember { mutableStateOf("") }
     var isActive by remember {mutableStateOf(false)}
-    val searchHistory = remember {mutableListOf("")}
+    val searchHistory = remember { mutableStateListOf<String>()}
 
-    Row(
+    Column(
         modifier = Modifier
-            .background(color = Color(0xFFE3DFCE))
-            .fillMaxSize(),
+        .background(color = Color(0xFFE3DFCE))
+        .fillMaxSize()
     ){
-        Text(
-            text = "Сообщения",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF4C050C),
+        Row(
             modifier = Modifier
-                .padding(top = 50.dp, start = 20.dp),
-            textAlign = TextAlign.Start
-        )
-        Text(
-            text = "+",
-            fontSize = 30.sp,
-            //fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF4C050C),
-            modifier = Modifier
-                .padding(top = 50.dp, end = 50.dp),
-            textAlign = TextAlign.End
-        )
-    }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ){
+                .fillMaxWidth()
+                .padding(top = 35.dp, start = 20.dp, end = 20.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Text(
+                text = "Сообщения",
+                fontSize = 30.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(0xFF4C050C),
+                modifier = Modifier
+                    .weight(1f),
+                textAlign = TextAlign.Start
+            )
+            IconButton( onClick = {}){
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = "Создать",
+                    tint = Color(0xFF4C050C)
+                )
+            }
+        }
         SearchBar(
-            query = searchQuery,
-            onQueryChange = {searchQuery = it},
-            onSearch = {
-                isActive = false
-                if (searchQuery.isNotEmpty() && !searchHistory.contains(searchQuery)){
-                    searchHistory.add(0,searchQuery)
-                }
-            },
-            active = isActive,
-            modifier = Modifier
-                .padding(top = 30.dp),
-            onActiveChange = {isActive = it},
-            placeholder = {Text ("Поиск по чатам и сообщениям")},
-            leadingIcon = {Icon (Icons.Default.Search, contentDescription = "Поиск")},
-            trailingIcon = {
-                if(isActive){
-                    IconButton(onClick = {
-                        if (searchQuery.isNotEmpty()){
-                            searchQuery = ""
-                        } else{
-                            isActive = false
+            inputField = {
+                SearchBarDefaults.InputField(
+                    query = searchQuery,
+                    onQueryChange = { searchQuery = it },
+                    onSearch = { query ->
+                        isActive = false
+
+                        if (query.isNotBlank() && !searchHistory.contains(query)){
+                            searchHistory.add(0, query)
                         }
-                    }){
-                        Icon(Icons.Default.Clear, contentDescription = "Очистить")
+                    },
+                    expanded = isActive,
+                    onExpandedChange = {isActive = it},
+                    placeholder = {
+                        Text("Поиск по чатам и сообщениям")
+                    },
+                    leadingIcon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Поиск"
+                        )
+                    },
+                    trailingIcon = {
+                        if(isActive) {
+                            IconButton(onClick = {
+                                if(searchQuery.isNotEmpty()){
+                                    searchQuery = ""
+                                }
+                                else {
+                                    isActive = false
+                                }
+                            })
+                            {
+                                Icon(
+                                    Icons.Default.Clear,
+                                    contentDescription = "Очистить"
+                                )
+                            }
+                        }
                     }
-                }
+                )
             },
+            expanded = isActive,
+            windowInsets = WindowInsets(top = 0.dp),
+            onExpandedChange = { isActive = it},
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 12.dp),
             colors = SearchBarDefaults.colors(
-                containerColor = Color(0xFFF7F4EB)
+                containerColor = Color(0xFFEAE4D5)
             )
         ){
             Column(modifier = Modifier
@@ -119,7 +138,9 @@ fun HomeScreen(navController: NavController, email: String) {
                             .padding(vertical = 12.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ){
-                        Icon(Icons.Default.History, contentDescription = null, modifier = Modifier.padding(end = 12.dp))
+                        Icon(Icons.Default.History,
+                            contentDescription = null,
+                            modifier = Modifier.padding(end = 12.dp))
                         Text(text = item)
                     }
                 }
@@ -127,8 +148,4 @@ fun HomeScreen(navController: NavController, email: String) {
         }
 
     }
-   // sealed class Screen(val route: String, val title: String, val icon: ImageVector){
-       // object Home: Screen("home", "Главная", Icons.Default.ChatBubbleOutline)
-
-   // }
 }
