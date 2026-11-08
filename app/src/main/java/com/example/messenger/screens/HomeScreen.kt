@@ -30,14 +30,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-
+@Preview (showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController, email: String) {
+fun HomeScreen(email: String = "") {
     var searchQuery by remember { mutableStateOf("") }
     var isActive by remember {mutableStateOf(false)}
     val searchHistory = remember { mutableStateListOf<String>()}
@@ -146,6 +147,8 @@ fun HomeScreen(navController: NavController, email: String) {
                 }
             }
         }
+
+        ChatItem("Лариса Подруга с работы пршлой 2020 год ", "Крутое приложени, мне нравится, продолжай в том же духе ты молодец))", "12:12")
 
     }
 }

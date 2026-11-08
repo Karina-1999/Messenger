@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                         arguments = listOf(navArgument("email"){type = NavType.StringType})
                     ) { backStackEntry ->
                         val email = requireNotNull(backStackEntry.arguments?.getString("email"))
-                        HomeScreen(navController, email = email)
+                        HomeScreen( email = email)
                     }
 
                 }
